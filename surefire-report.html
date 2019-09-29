@@ -26,7 +26,7 @@
     <div id="breadcrumbs">
       <div class="xleft">
         <span id="publishDate">Last Published: 2019-09-29</span>
-          &#xA0;| <span id="projectVersion">Version: 1.0.1-SNAPSHOT</span>
+          &#xA0;| <span id="projectVersion">Version: 1.0.2-SNAPSHOT</span>
       </div>
       <div class="xright"><a href="./" title="sonar-quality-gates-maven-plugin">sonar-quality-gates-maven-plugin</a>      </div>
       <div class="clear">
@@ -96,12 +96,12 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
-<td>1</td>
+<td>7</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.288</td></tr></table><br />
+<td>1.606</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></section><section>
 <h2><a name="Package_List"></a>Package List</h2><a name="Package_List"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
@@ -115,14 +115,42 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
+<td><a href="#com.hack23.maven.plugin">com.hack23.maven.plugin</a></td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>1.363</td></tr>
+<tr class="a">
 <td><a href="#com.hack23.maven.plugin.model">com.hack23.maven.plugin.model</a></td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.288</td></tr></table><br />
+<td>0.243</td></tr></table><br />
 <p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p><section>
+<h3><a name="com.hack23.maven.plugin"></a>com.hack23.maven.plugin</h3><a name="com.hack23.maven.plugin"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors</th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#com.hack23.maven.plugin.SonarQualityGatesMojoTest"><figure><img src="images/icon_success_sml.gif" alt="" /></figure></a></td>
+<td><a href="#com.hack23.maven.plugin.SonarQualityGatesMojoTest">SonarQualityGatesMojoTest</a></td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>1.363</td></tr></table></section><section>
 <h3><a name="com.hack23.maven.plugin.model"></a>com.hack23.maven.plugin.model</h3><a name="com.hack23.maven.plugin.model"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
@@ -142,15 +170,41 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>0.288</td></tr></table></section><br /></section><section>
+<td>0.243</td></tr></table></section><br /></section><section>
 <h2><a name="Test_Cases"></a>Test Cases</h2><a name="Test_Cases"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><section>
+<h3><a name="SonarQualityGatesMojoTest"></a>SonarQualityGatesMojoTest</h3><a name="com.hack23.maven.plugin.SonarQualityGatesMojoTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.passedQualityGateTest"></a>passedQualityGateTest</td>
+<td>0.956</td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.unirestExceptionTest"></a>unirestExceptionTest</td>
+<td>0.107</td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.failedQualityGateTest"></a>failedQualityGateTest</td>
+<td>0.074</td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.failedMissingProjectQualityGateTest"></a>failedMissingProjectQualityGateTest</td>
+<td>0.08</td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.sonarProjectKeyPropertyTest"></a>sonarProjectKeyPropertyTest</td>
+<td>0.063</td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.hack23.maven.plugin.SonarQualityGatesMojoTest.sonarqube404Test"></a>sonarqube404Test</td>
+<td>0.078</td></tr></table></section><section>
 <h3><a name="ModelSanityTest"></a>ModelSanityTest</h3><a name="com.hack23.maven.plugin.model.ModelSanityTest"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td><a name="TC_com.hack23.maven.plugin.model.ModelSanityTest.modelTest"></a>modelTest</td>
-<td>0.234</td></tr></table></section><br /></section>
+<td>0.215</td></tr></table></section><br /></section>
       </div>
     </div>
     <div class="clear">

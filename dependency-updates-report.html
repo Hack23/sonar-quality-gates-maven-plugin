@@ -26,7 +26,7 @@
     <div id="breadcrumbs">
       <div class="xleft">
         <span id="publishDate">Last Published: 2019-09-29</span>
-          &#xA0;| <span id="projectVersion">Version: 1.0.1-SNAPSHOT</span>
+          &#xA0;| <span id="projectVersion">Version: 1.0.2-SNAPSHOT</span>
       </div>
       <div class="xright"><a href="./" title="sonar-quality-gates-maven-plugin">sonar-quality-gates-maven-plugin</a>      </div>
       <div class="clear">
@@ -71,7 +71,7 @@
 <tr class="a">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td># of dependencies using the latest version available</td>
-<td>9</td></tr>
+<td>10</td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
 <td># of dependencies where the next version available is smaller than an incremental version update</td>
@@ -79,7 +79,7 @@
 <tr class="a">
 <td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
 <td># of dependencies where the next version available is an incremental version update</td>
-<td>0</td></tr>
+<td>1</td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
 <td># of dependencies where the next version available is a minor version update</td>
@@ -239,6 +239,18 @@
 <tr class="b">
 <td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
 <td>org.apache.maven</td>
+<td>maven-compat</td>
+<td>3.5.0</td>
+<td>test</td>
+<td></td>
+<td>jar</td>
+<td></td>
+<td><b>3.5.2</b></td>
+<td><b>3.6.0</b></td>
+<td></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
+<td>org.apache.maven</td>
 <td>maven-core</td>
 <td>3.5.0</td>
 <td>provided</td>
@@ -248,7 +260,7 @@
 <td><b>3.5.2</b></td>
 <td><b>3.6.0</b></td>
 <td></td></tr>
-<tr class="a">
+<tr class="b">
 <td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></td>
 <td>org.apache.maven</td>
 <td>maven-plugin-api</td>
@@ -259,6 +271,18 @@
 <td><b>3.5.0.redhat-5</b></td>
 <td><b>3.5.2</b></td>
 <td><b>3.6.0</b></td>
+<td></td></tr>
+<tr class="a">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td>org.apache.maven.plugin-testing</td>
+<td>maven-plugin-testing-harness</td>
+<td>3.3.0</td>
+<td>test</td>
+<td></td>
+<td>jar</td>
+<td></td>
+<td></td>
+<td></td>
 <td></td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
@@ -578,6 +602,32 @@
 <tr class="a">
 <th width="80%">Type</th>
 <td>jar</td></tr></table></section><section>
+<h3><a name="org.apache.maven:maven-compat"></a>org.apache.maven:maven-compat</h3>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th width="80%">Status</th>
+<td><figure><img src="images/icon_warning_sml.gif" alt="" /></figure>&#160;There is at least one newer incremental version available. Incremental updates are typically passive.</td></tr>
+<tr class="b">
+<th width="80%">Group Id</th>
+<td>org.apache.maven</td></tr>
+<tr class="a">
+<th width="80%">Artifact Id</th>
+<td>maven-compat</td></tr>
+<tr class="b">
+<th width="80%">Current Version</th>
+<td>3.5.0</td></tr>
+<tr class="a">
+<th width="80%">Scope</th>
+<td>test</td></tr>
+<tr class="b">
+<th width="80%">Classifier</th>
+<td></td></tr>
+<tr class="a">
+<th width="80%">Type</th>
+<td>jar</td></tr>
+<tr class="b">
+<th width="80%">Newer versions</th>
+<td><b>3.5.2</b>&#160;<i>Next Incremental</i><br />3.5.3<br /><b>3.5.4</b>&#160;<i>Latest Incremental</i><br /><b>3.6.0</b>&#160;<i>Next Minor</i><br />3.6.0.redhat-00001<br />3.6.1<br /><b>3.6.2</b>&#160;<i>Latest Minor</i></td></tr></table></section><section>
 <h3><a name="org.apache.maven:maven-core"></a>org.apache.maven:maven-core</h3>
 <table border="0" class="bodyTable">
 <tr class="a">
@@ -630,6 +680,29 @@
 <tr class="b">
 <th width="80%">Newer versions</th>
 <td><b>3.5.0.redhat-5</b>&#160;<i>Next Version</i><br /><b>3.5.2</b>&#160;<i>Next Incremental</i><br />3.5.3<br />3.5.4<br /><b>3.5.4.redhat-00002</b>&#160;<i>Latest Incremental</i><br /><b>3.6.0</b>&#160;<i>Next Minor</i><br />3.6.0.redhat-00001<br />3.6.1<br /><b>3.6.2</b>&#160;<i>Latest Minor</i></td></tr></table></section><section>
+<h3><a name="org.apache.maven.plugin-testing:maven-plugin-testing-harness"></a>org.apache.maven.plugin-testing:maven-plugin-testing-harness</h3>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th width="80%">Status</th>
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure>&#160;No newer versions available.</td></tr>
+<tr class="b">
+<th width="80%">Group Id</th>
+<td>org.apache.maven.plugin-testing</td></tr>
+<tr class="a">
+<th width="80%">Artifact Id</th>
+<td>maven-plugin-testing-harness</td></tr>
+<tr class="b">
+<th width="80%">Current Version</th>
+<td>3.3.0</td></tr>
+<tr class="a">
+<th width="80%">Scope</th>
+<td>test</td></tr>
+<tr class="b">
+<th width="80%">Classifier</th>
+<td></td></tr>
+<tr class="a">
+<th width="80%">Type</th>
+<td>jar</td></tr></table></section><section>
 <h3><a name="org.apache.maven.plugin-tools:maven-plugin-annotations"></a>org.apache.maven.plugin-tools:maven-plugin-annotations</h3>
 <table border="0" class="bodyTable">
 <tr class="a">

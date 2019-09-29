@@ -34,7 +34,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 <span class="fc" id="L34">	}</span>
 
 	@Override
-	public final String toString() {
+	public String toString() {
 <span class="fc" id="L38">		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
 	}
 
@@ -44,7 +44,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	}
 
 	@Override
-	public final int hashCode() {
+	public int hashCode() {
 <span class="fc" id="L48">		return HashCodeBuilder.reflectionHashCode(this);</span>
 	}
 }
