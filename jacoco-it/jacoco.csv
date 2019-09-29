@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+sonar-quality-gates-maven-plugin,com.hack23.maven.plugin.model,MeasuresContainer,0,25,0,0,0,7,0,6,0,6
+sonar-quality-gates-maven-plugin,com.hack23.maven.plugin.model,Measures,0,39,0,0,0,13,0,10,0,10
+sonar-quality-gates-maven-plugin,com.hack23.maven.plugin.model,QualityGateValue,0,39,0,0,0,13,0,10,0,10
+sonar-quality-gates-maven-plugin,com.hack23.maven.plugin.model,Conditions,0,60,0,0,0,22,0,16,0,16
+sonar-quality-gates-maven-plugin,com.hack23.maven.plugin,SonarQualityGatesMojo,223,0,18,0,43,0,15,0,6,0

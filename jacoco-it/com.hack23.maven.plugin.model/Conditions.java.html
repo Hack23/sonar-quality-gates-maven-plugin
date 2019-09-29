@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Conditions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sonar-quality-gates-maven-plugin</a> &gt; <a href="index.source.html" class="el_package">com.hack23.maven.plugin.model</a> &gt; <span class="el_source">Conditions.java</span></div><h1>Conditions.java</h1><pre class="source lang-java linenums">package com.hack23.maven.plugin.model;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Conditions.
+ */
+<span class="fc" id="L12">public final class Conditions {</span>
+	
+	/** The op. */
+	private String op;
+
+	/** The period. */
+	private String period;
+
+	/** The metric. */
+	private String metric;
+
+	/** The level. */
+	private String level;
+
+	/** The error. */
+	private String error;
+
+	/** The actual. */
+	private String actual;
+
+	/**
+	 * Gets the actual.
+	 *
+	 * @return the actual
+	 */
+	public String getActual() {
+<span class="fc" id="L38">		return actual;</span>
+	}
+
+	/**
+	 * Sets the actual.
+	 *
+	 * @param actual the new actual
+	 */
+	public void setActual(final String actual) {
+<span class="fc" id="L47">		this.actual = actual;</span>
+<span class="fc" id="L48">	}</span>
+
+	/**
+	 * Gets the op.
+	 *
+	 * @return the op
+	 */
+	public String getOp() {
+<span class="fc" id="L56">		return op;</span>
+	}
+
+	/**
+	 * Sets the op.
+	 *
+	 * @param op the new op
+	 */
+	public void setOp(final String op) {
+<span class="fc" id="L65">		this.op = op;</span>
+<span class="fc" id="L66">	}</span>
+
+	/**
+	 * Gets the period.
+	 *
+	 * @return the period
+	 */
+	public String getPeriod() {
+<span class="fc" id="L74">		return period;</span>
+	}
+
+	/**
+	 * Sets the period.
+	 *
+	 * @param period the new period
+	 */
+	public void setPeriod(final String period) {
+<span class="fc" id="L83">		this.period = period;</span>
+<span class="fc" id="L84">	}</span>
+
+	/**
+	 * Gets the metric.
+	 *
+	 * @return the metric
+	 */
+	public String getMetric() {
+<span class="fc" id="L92">		return metric;</span>
+	}
+
+	/**
+	 * Sets the metric.
+	 *
+	 * @param metric the new metric
+	 */
+	public void setMetric(final String metric) {
+<span class="fc" id="L101">		this.metric = metric;</span>
+<span class="fc" id="L102">	}</span>
+
+	/**
+	 * Gets the level.
+	 *
+	 * @return the level
+	 */
+	public String getLevel() {
+<span class="fc" id="L110">		return level;</span>
+	}
+
+	/**
+	 * Sets the level.
+	 *
+	 * @param level the new level
+	 */
+	public void setLevel(final String level) {
+<span class="fc" id="L119">		this.level = level;</span>
+<span class="fc" id="L120">	}</span>
+
+	/**
+	 * Gets the error.
+	 *
+	 * @return the error
+	 */
+	public String getError() {
+<span class="fc" id="L128">		return error;</span>
+	}
+
+	/**
+	 * Sets the error.
+	 *
+	 * @param error the new error
+	 */
+	public void setError(final String error) {
+<span class="fc" id="L137">		this.error = error;</span>
+<span class="fc" id="L138">	}</span>
+
+	@Override
+	public final String toString() {
+<span class="fc" id="L142">		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc" id="L147">		return EqualsBuilder.reflectionEquals(this, object);</span>
+	}
+
+	@Override
+	public final int hashCode() {
+<span class="fc" id="L152">		return HashCodeBuilder.reflectionHashCode(this);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Measures.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sonar-quality-gates-maven-plugin</a> &gt; <a href="index.source.html" class="el_package">com.hack23.maven.plugin.model</a> &gt; <span class="el_source">Measures.java</span></div><h1>Measures.java</h1><pre class="source lang-java linenums">package com.hack23.maven.plugin.model;
+
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * The Class Measures.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="fc" id="L14">public final class Measures {</span>
+	
+	/** The component. */
+	private String component;
+
+	/** The metric. */
+	private String metric;
+
+	/** The value. */
+	private String value;
+
+	/**
+	 * Gets the component.
+	 *
+	 * @return the component
+	 */
+	public String getComponent() {
+<span class="fc" id="L31">		return component;</span>
+	}
+
+	/**
+	 * Sets the component.
+	 *
+	 * @param component the new component
+	 */
+	public void setComponent(final String component) {
+<span class="fc" id="L40">		this.component = component;</span>
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Gets the metric.
+	 *
+	 * @return the metric
+	 */
+	public String getMetric() {
+<span class="fc" id="L49">		return metric;</span>
+	}
+
+	/**
+	 * Sets the metric.
+	 *
+	 * @param metric the new metric
+	 */
+	public void setMetric(final String metric) {
+<span class="fc" id="L58">		this.metric = metric;</span>
+<span class="fc" id="L59">	}</span>
+
+	/**
+	 * Gets the value.
+	 *
+	 * @return the value
+	 */
+	public String getValue() {
+<span class="fc" id="L67">		return value;</span>
+	}
+
+	/**
+	 * Sets the value.
+	 *
+	 * @param value the new value
+	 */
+	public void setValue(final String value) {
+<span class="fc" id="L76">		this.value = value;</span>
+<span class="fc" id="L77">	}</span>
+
+	@Override
+	public final String toString() {
+<span class="fc" id="L81">		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc" id="L86">		return EqualsBuilder.reflectionEquals(this, object);</span>
+	}
+
+	@Override
+	public final int hashCode() {
+<span class="fc" id="L91">		return HashCodeBuilder.reflectionHashCode(this);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

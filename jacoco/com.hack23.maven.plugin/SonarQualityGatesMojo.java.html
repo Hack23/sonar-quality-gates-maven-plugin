@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SonarQualityGatesMojo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sonar-quality-gates-maven-plugin</a> &gt; <a href="index.source.html" class="el_package">com.hack23.maven.plugin</a> &gt; <span class="el_source">SonarQualityGatesMojo.java</span></div><h1>SonarQualityGatesMojo.java</h1><pre class="source lang-java linenums">package com.hack23.maven.plugin;
+
+import static com.mashape.unirest.http.Unirest.setHttpClient;
+import static java.lang.String.format;
+import static org.apache.http.impl.client.HttpClients.createDefault;
+
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import javax.inject.Inject;
+
+import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hack23.maven.plugin.model.Conditions;
+import com.hack23.maven.plugin.model.Measures;
+import com.hack23.maven.plugin.model.MeasuresContainer;
+import com.hack23.maven.plugin.model.QualityGateValue;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
+/**
+ * The Class SonarQualityGatesMojo.
+ */
+@Mojo(name = &quot;inspect&quot;)
+public class SonarQualityGatesMojo extends AbstractMojo {
+
+	/** The Constant COLON. */
+	private static final String COLON = &quot;:&quot;;
+	
+	/** The Constant SONAR_API_URL. */
+	private static final String SONAR_API_URL = &quot;%s/api/measures/search?projectKeys=%s&amp;metricKeys=alert_status,quality_gate_details&quot;;
+	
+	/** The Constant SONAR_DEFAULT_HOST_URL. */
+	private static final String SONAR_DEFAULT_HOST_URL = &quot;http://localhost:9000&quot;;
+	
+	/** The Constant SONAR_HOST_URL. */
+	private static final String SONAR_HOST_URL = &quot;sonar.host.url&quot;;
+	
+	/** The Constant SONAR_PROJECT_KEY. */
+	private static final String SONAR_PROJECT_KEY = &quot;sonar.projectKey&quot;;
+	
+	/** The Constant STATUS_CODE_OK. */
+	private static final int STATUS_CODE_OK = 200;
+
+	/** The session. */
+	@Parameter(defaultValue = &quot;${session}&quot;, readonly = true)
+	private MavenSession session;
+
+	/** The sonar host url. */
+	@Parameter(property = SONAR_HOST_URL)
+	private String sonarHostUrl;
+
+	/**
+	 * Instantiates a new sonar quality gates mojo.
+	 */
+	@Inject
+<span class="nc" id="L68">	public SonarQualityGatesMojo() {</span>
+<span class="nc" id="L69">		setHttpClient(createDefault());</span>
+<span class="nc" id="L70">	}</span>
+
+	/**
+	 * Execute.
+	 *
+	 * @throws MojoExecutionException the mojo execution exception
+	 * @throws MojoFailureException the mojo failure exception
+	 */
+	public void execute() throws MojoExecutionException, MojoFailureException {
+<span class="nc" id="L79">		final MavenProject topLevelProject = session.getTopLevelProject();</span>
+<span class="nc" id="L80">		final List&lt;Measures&gt; events = retrieveSonarMeasures(</span>
+<span class="nc" id="L81">				format(SONAR_API_URL, getSonarHostUrl(topLevelProject.getProperties()), getSonarKey(topLevelProject)));</span>
+
+<span class="nc bnc" id="L83" title="All 2 branches missed.">		if (events.isEmpty()) {</span>
+<span class="nc" id="L84">			throw new MojoExecutionException(</span>
+<span class="nc" id="L85">					&quot;\nno matching project in sonarqube for project key:&quot; + getSonarKey(topLevelProject));</span>
+		}
+
+<span class="nc bnc" id="L88" title="All 4 branches missed.">		if (!events.isEmpty() &amp;&amp; !events.get(0).getValue().equals(&quot;OK&quot;)) {</span>
+
+			try {
+<span class="nc" id="L91">				final QualityGateValue qualityGateValue = new ObjectMapper().readValue(events.get(1).getValue(),</span>
+						QualityGateValue.class);
+<span class="nc" id="L93">				final StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L94">				builder.append(&quot;\nFailed quality gate\n&quot;);</span>
+<span class="nc" id="L95">				final ArrayList&lt;Conditions&gt; conditions = qualityGateValue.getConditions();</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">				for (final Conditions condition : conditions) {</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">					if (!condition.getLevel().equals(&quot;OK&quot;)) {</span>
+<span class="nc" id="L98">						builder.append(condition);</span>
+<span class="nc" id="L99">						builder.append(&quot;\n&quot;);</span>
+					}
+<span class="nc" id="L101">				}</span>
+
+<span class="nc" id="L103">				throw new MojoExecutionException(builder.toString());</span>
+
+<span class="nc" id="L105">			} catch (final IOException e) {</span>
+<span class="nc" id="L106">				throw new MojoFailureException(&quot;&quot;, e);</span>
+			}
+
+		}
+<span class="nc" id="L110">	}</span>
+
+	/**
+	 * Retrieve sonar measures.
+	 *
+	 * @param url the url
+	 * @return the list
+	 * @throws MojoFailureException the mojo failure exception
+	 */
+	private List&lt;Measures&gt; retrieveSonarMeasures(final String url) throws MojoFailureException {
+		try {
+<span class="nc" id="L121">			final HttpResponse&lt;String&gt; response = Unirest.get(url).asString();</span>
+<span class="nc" id="L122">			final String body = response.getBody();</span>
+
+<span class="nc bnc" id="L124" title="All 2 branches missed.">			if (response.getStatus() != STATUS_CODE_OK) {</span>
+<span class="nc" id="L125">				throw new MojoFailureException(MessageFormat.format(</span>
+						&quot;Attempt to call Sonarqube responded with an error status :{0} : for url:{1} : response{2}: &quot;,
+<span class="nc" id="L127">						response.getStatus(), url, body));</span>
+			}
+
+<span class="nc" id="L130">			return new ObjectMapper().readValue(body, MeasuresContainer.class).getMeasures();</span>
+<span class="nc" id="L131">		} catch (IOException | UnirestException e) {</span>
+<span class="nc" id="L132">			throw new MojoFailureException(&quot;Could not execute sonar-quality-gates-plugin&quot;, e);</span>
+		} finally {
+<span class="nc" id="L134">			shutdown();</span>
+		}
+	}
+
+	/**
+	 * Gets the sonar host url.
+	 *
+	 * @param properties the properties
+	 * @return the sonar host url
+	 */
+	private String getSonarHostUrl(final Properties properties) {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		if (sonarHostUrl != null) {</span>
+<span class="nc" id="L146">			return sonarHostUrl;</span>
+		}
+
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		return properties.containsKey(SONAR_HOST_URL) ? properties.getProperty(SONAR_HOST_URL) : SONAR_DEFAULT_HOST_URL;</span>
+	}
+
+	/**
+	 * Gets the sonar key.
+	 *
+	 * @param pom the pom
+	 * @return the sonar key
+	 */
+	private String getSonarKey(final MavenProject pom) {
+<span class="nc bnc" id="L159" title="All 2 branches missed.">		if (pom.getModel().getProperties().containsKey(SONAR_PROJECT_KEY)) {</span>
+<span class="nc" id="L160">			return pom.getModel().getProperties().getProperty(SONAR_PROJECT_KEY);</span>
+		}
+
+<span class="nc" id="L163">		return pom.getGroupId() + COLON + pom.getArtifactId();</span>
+	}
+
+	/**
+	 * Shutdown.
+	 *
+	 * @throws MojoFailureException the mojo failure exception
+	 */
+	private void shutdown() throws MojoFailureException {
+		try {
+<span class="nc" id="L173">			Unirest.shutdown();</span>
+<span class="nc" id="L174">		} catch (final IOException e) {</span>
+<span class="nc" id="L175">			throw new MojoFailureException(&quot;Could not properly shutdown&quot;, e);</span>
+<span class="nc" id="L176">		}</span>
+<span class="nc" id="L177">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
