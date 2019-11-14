@@ -6,7 +6,6 @@ import static org.apache.http.impl.client.HttpClients.createDefault;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -92,7 +91,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 						QualityGateValue.class);
 				final StringBuilder builder = new StringBuilder();
 				builder.append("\nFailed quality gate\n");
-				final ArrayList<Conditions> conditions = qualityGateValue.getConditions();
+				final List<Conditions> conditions = qualityGateValue.getConditions();
 				for (final Conditions condition : conditions) {
 					if (!condition.getLevel().equals("OK")) {
 						builder.append(condition);
