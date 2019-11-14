@@ -1,6 +1,7 @@
 package com.hack23.maven.plugin.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -19,7 +20,7 @@ public final class QualityGateValue {
 	private String level;
 
 	/** The conditions. */
-	private ArrayList<Conditions> conditions;
+	private List<Conditions> conditions;
 
 	/**
 	 * Gets the ignored conditions.
@@ -62,8 +63,8 @@ public final class QualityGateValue {
 	 *
 	 * @return the conditions
 	 */
-	public ArrayList<Conditions> getConditions() {
-		return conditions;
+	public List<Conditions> getConditions() {
+		return Collections.unmodifiableList(conditions);
 	}
 
 	/**
@@ -71,8 +72,8 @@ public final class QualityGateValue {
 	 *
 	 * @param conditions the new conditions
 	 */
-	public void setConditions(final ArrayList<Conditions> conditions) {
-		this.conditions = conditions;
+	public void setConditions(final List<Conditions> conditions) {
+		this.conditions = Collections.unmodifiableList(conditions);
 	}
 
 	@Override

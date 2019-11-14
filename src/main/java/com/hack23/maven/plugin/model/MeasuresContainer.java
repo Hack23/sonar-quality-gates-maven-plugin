@@ -1,6 +1,7 @@
 package com.hack23.maven.plugin.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -13,15 +14,15 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public final class MeasuresContainer {
 
 	/** The measures. */
-	private ArrayList<Measures> measures;
+	private List<Measures> measures;
 
 	/**
 	 * Gets the measures.
 	 *
 	 * @return the measures
 	 */
-	public ArrayList<Measures> getMeasures() {
-		return measures;
+	public List<Measures> getMeasures() {
+		return Collections.unmodifiableList(measures);
 	}
 
 	/**
@@ -29,8 +30,8 @@ public final class MeasuresContainer {
 	 *
 	 * @param measures the new measures
 	 */
-	public void setMeasures(final ArrayList<Measures> measures) {
-		this.measures = measures;
+	public void setMeasures(final List<Measures> measures) {
+		this.measures = Collections.unmodifiableList(measures);
 	}
 
 	@Override
