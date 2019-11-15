@@ -95,7 +95,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 				for (final Conditions condition : conditions) {
 					if (!condition.getLevel().equals("OK")) {
 						builder.append(condition);
-						builder.append("\n");
+						builder.append('\n');
 					}
 				}
 
