@@ -84,7 +84,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 					"\nno matching project in sonarqube for project key:" + getSonarKey(topLevelProject));
 		}
 
-		if (!measures.get(0).getValue().equals("OK")) {
+		if (!"OK".equals(measures.get(0).getValue())) {
 
 			try {
 				final QualityGateValue qualityGateValue = new ObjectMapper().readValue(measures.get(1).getValue(),
@@ -93,7 +93,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 				builder.append("\nFailed quality gate\n");
 				final List<Conditions> conditions = qualityGateValue.getConditions();
 				for (final Conditions condition : conditions) {
-					if (!condition.getLevel().equals("OK")) {
+					if (!"OK".equals(condition.getLevel())) {
 						builder.append(condition);
 						builder.append('\n');
 					}
@@ -154,7 +154,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @param pom the pom
 	 * @return the sonar key
 	 */
-	private String getSonarKey(final MavenProject pom) {
+	private static String getSonarKey(final MavenProject pom) {
 		if (pom.getModel().getProperties().containsKey(SONAR_PROJECT_KEY)) {
 			return pom.getModel().getProperties().getProperty(SONAR_PROJECT_KEY);
 		}
@@ -167,7 +167,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 *
 	 * @throws MojoFailureException the mojo failure exception
 	 */
-	private void shutdown() throws MojoFailureException {
+	private static void shutdown() throws MojoFailureException {
 		try {
 			Unirest.shutdown();
 		} catch (final IOException e) {
