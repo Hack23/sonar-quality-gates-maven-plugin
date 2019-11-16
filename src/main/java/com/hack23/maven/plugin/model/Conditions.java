@@ -29,6 +29,13 @@ public final class Conditions {
 	private String actual;
 
 	/**
+	 * Instantiates a new conditions.
+	 */
+	public Conditions() {
+		super();
+	}
+
+	/**
 	 * Gets the actual.
 	 *
 	 * @return the actual

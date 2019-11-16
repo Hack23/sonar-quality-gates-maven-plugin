@@ -23,6 +23,13 @@ public final class Measures {
 	private String value;
 
 	/**
+	 * Instantiates a new measures.
+	 */
+	public Measures() {
+		super();
+	}
+
+	/**
 	 * Gets the component.
 	 *
 	 * @return the component

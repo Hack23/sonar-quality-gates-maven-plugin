@@ -23,6 +23,13 @@ public final class QualityGateValue {
 	private List<Conditions> conditions;
 
 	/**
+	 * Instantiates a new quality gate value.
+	 */
+	public QualityGateValue() {
+		super();
+	}
+
+	/**
 	 * Gets the ignored conditions.
 	 *
 	 * @return the ignored conditions

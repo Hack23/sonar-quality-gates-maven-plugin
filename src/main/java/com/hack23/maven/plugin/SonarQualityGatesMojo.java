@@ -115,7 +115,7 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @return the list
 	 * @throws MojoFailureException the mojo failure exception
 	 */
-	private List<Measures> retrieveSonarMeasures(final String url) throws MojoFailureException {
+	private static List<Measures> retrieveSonarMeasures(final String url) throws MojoFailureException {
 		try {
 			final HttpResponse<String> response = Unirest.get(url).asString();
 			final String body = response.getBody();

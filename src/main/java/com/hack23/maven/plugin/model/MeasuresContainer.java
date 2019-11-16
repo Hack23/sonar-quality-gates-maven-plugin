@@ -17,6 +17,13 @@ public final class MeasuresContainer {
 	private List<Measures> measures;
 
 	/**
+	 * Instantiates a new measures container.
+	 */
+	public MeasuresContainer() {
+		super();
+	}
+
+	/**
 	 * Gets the measures.
 	 *
 	 * @return the measures
