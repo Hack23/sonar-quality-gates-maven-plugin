@@ -4,6 +4,7 @@
 	<suppress>
 		<notes><![CDATA[This suppresses any jar.]]></notes>
 		<filePath regex="true">.*\b\.*</filePath>
-		<cve>placeholder</cve>
+		<!-- placeholder -->
+		<cve>CVE-2000-10000</cve>
 	</suppress>
 </suppressions>
