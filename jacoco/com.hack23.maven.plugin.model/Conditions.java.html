@@ -5,11 +5,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Conditions.
  */
-<span class="fc" id="L12">public final class Conditions {</span>
+public final class Conditions {
 	
 	/** The op. */
 	private String op;
@@ -30,12 +29,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	private String actual;
 
 	/**
+	 * Instantiates a new conditions.
+	 */
+	public Conditions() {
+<span class="fc" id="L35">		super();</span>
+<span class="fc" id="L36">	}</span>
+
+	/**
 	 * Gets the actual.
 	 *
 	 * @return the actual
 	 */
 	public String getActual() {
-<span class="fc" id="L38">		return actual;</span>
+<span class="fc" id="L44">		return actual;</span>
 	}
 
 	/**
@@ -44,8 +50,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param actual the new actual
 	 */
 	public void setActual(final String actual) {
-<span class="fc" id="L47">		this.actual = actual;</span>
-<span class="fc" id="L48">	}</span>
+<span class="fc" id="L53">		this.actual = actual;</span>
+<span class="fc" id="L54">	}</span>
 
 	/**
 	 * Gets the op.
@@ -53,7 +59,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @return the op
 	 */
 	public String getOp() {
-<span class="fc" id="L56">		return op;</span>
+<span class="fc" id="L62">		return op;</span>
 	}
 
 	/**
@@ -62,8 +68,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param op the new op
 	 */
 	public void setOp(final String op) {
-<span class="fc" id="L65">		this.op = op;</span>
-<span class="fc" id="L66">	}</span>
+<span class="fc" id="L71">		this.op = op;</span>
+<span class="fc" id="L72">	}</span>
 
 	/**
 	 * Gets the period.
@@ -71,7 +77,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @return the period
 	 */
 	public String getPeriod() {
-<span class="fc" id="L74">		return period;</span>
+<span class="fc" id="L80">		return period;</span>
 	}
 
 	/**
@@ -80,8 +86,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param period the new period
 	 */
 	public void setPeriod(final String period) {
-<span class="fc" id="L83">		this.period = period;</span>
-<span class="fc" id="L84">	}</span>
+<span class="fc" id="L89">		this.period = period;</span>
+<span class="fc" id="L90">	}</span>
 
 	/**
 	 * Gets the metric.
@@ -89,7 +95,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @return the metric
 	 */
 	public String getMetric() {
-<span class="fc" id="L92">		return metric;</span>
+<span class="fc" id="L98">		return metric;</span>
 	}
 
 	/**
@@ -98,8 +104,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param metric the new metric
 	 */
 	public void setMetric(final String metric) {
-<span class="fc" id="L101">		this.metric = metric;</span>
-<span class="fc" id="L102">	}</span>
+<span class="fc" id="L107">		this.metric = metric;</span>
+<span class="fc" id="L108">	}</span>
 
 	/**
 	 * Gets the level.
@@ -107,7 +113,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @return the level
 	 */
 	public String getLevel() {
-<span class="fc" id="L110">		return level;</span>
+<span class="fc" id="L116">		return level;</span>
 	}
 
 	/**
@@ -116,8 +122,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param level the new level
 	 */
 	public void setLevel(final String level) {
-<span class="fc" id="L119">		this.level = level;</span>
-<span class="fc" id="L120">	}</span>
+<span class="fc" id="L125">		this.level = level;</span>
+<span class="fc" id="L126">	}</span>
 
 	/**
 	 * Gets the error.
@@ -125,7 +131,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @return the error
 	 */
 	public String getError() {
-<span class="fc" id="L128">		return error;</span>
+<span class="fc" id="L134">		return error;</span>
 	}
 
 	/**
@@ -134,22 +140,22 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 	 * @param error the new error
 	 */
 	public void setError(final String error) {
-<span class="fc" id="L137">		this.error = error;</span>
-<span class="fc" id="L138">	}</span>
+<span class="fc" id="L143">		this.error = error;</span>
+<span class="fc" id="L144">	}</span>
 
 	@Override
 	public String toString() {
-<span class="fc" id="L142">		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+<span class="fc" id="L148">		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
 	}
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="fc" id="L147">		return EqualsBuilder.reflectionEquals(this, object);</span>
+<span class="fc" id="L153">		return EqualsBuilder.reflectionEquals(this, object);</span>
 	}
 
 	@Override
 	public int hashCode() {
-<span class="fc" id="L152">		return HashCodeBuilder.reflectionHashCode(this);</span>
+<span class="fc" id="L158">		return HashCodeBuilder.reflectionHashCode(this);</span>
 	}
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
