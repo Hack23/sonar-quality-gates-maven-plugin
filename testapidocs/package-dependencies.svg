@@ -22,7 +22,7 @@ link com.hack23.maven.plugin to org.junit.rules--><path d="M797.019,27.2621 C922
 link com.hack23.maven.plugin.model to org.junit--><path d="M1769.9618,32.0352 C1719.0734,48.3505 1628.9231,77.2537 1579.7783,93.01 " fill="none" id="com.hack23.maven.plugin.model-&gt;org.junit" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1574.8633,94.5858,1584.6548,95.647,1579.6246,93.0592,1582.2123,88.029,1574.8633,94.5858" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[0fe73e0c5255008cf0477c569da8b42a]
 link com.hack23.maven.plugin.model to com.openpojo.validation.test--><path d="M1792.5993,32.0352 C1774.1418,46.9431 1742.6722,72.3609 1722.4978,88.6556 " fill="none" id="com.hack23.maven.plugin.model-&gt;com.openpojo.validation.test" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1718.373,91.9872,1727.8878,89.4439,1722.2627,88.8455,1722.8611,83.2204,1718.373,91.9872" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8706a4088e37bf50a67981ae40e823a3]
 link com.hack23.maven.plugin.model to com.openpojo.reflection--><path d="M1822.4007,32.0352 C1840.8582,46.9431 1872.3278,72.3609 1892.5022,88.6556 " fill="none" id="com.hack23.maven.plugin.model-&gt;com.openpojo.reflection" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1896.627,91.9872,1892.1389,83.2204,1892.7373,88.8455,1887.1122,89.4439,1896.627,91.9872" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[80b6e0a723d8ce199fc996c2d5a30396]
-link com.hack23.maven.plugin.model to com.openpojo.reflection.filters--><path d="M1852.9184,32.0352 C1911.5323,47.5669 2013.1966,74.5063 2074.1257,90.6516 " fill="none" id="com.hack23.maven.plugin.model-&gt;com.openpojo.reflection.filters" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="2079.1659,91.9872,2071.4909,85.8151,2074.3327,90.7063,2069.4415,93.5482,2079.1659,91.9872" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="186" x="1027.5" y="135.2822">UMLDoclet 2.0.7, PlantUML 1.2019.12</text><!--MD5=[cb557878072a2f210ebe99d74669c4b6]
+link com.hack23.maven.plugin.model to com.openpojo.reflection.filters--><path d="M1852.9184,32.0352 C1911.5323,47.5669 2013.1966,74.5063 2074.1257,90.6516 " fill="none" id="com.hack23.maven.plugin.model-&gt;com.openpojo.reflection.filters" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="2079.1659,91.9872,2071.4909,85.8151,2074.3327,90.7063,2069.4415,93.5482,2079.1659,91.9872" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="186" x="1027.5" y="135.2822">UMLDoclet 2.0.7, PlantUML 1.2019.12</text><!--MD5=[48d7084bcab84a72788d4c774cd5792d]
 @startuml
     set namespaceSeparator none
     hide circle
@@ -53,7 +53,7 @@ PlantUML version 1.2019.12(Sun Nov 03 11:24:54 CET 2019)
 (APACHE source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.5-ea+10-post-Ubuntu-0ubuntu1
+Java Version: 11.0.5+10-post-Ubuntu-0ubuntu1.1
 Operating System: Linux
 Default Encoding: UTF-8
 Language: en
