@@ -40,7 +40,7 @@
 
 		<jackson-annotations.version>2.10.2</jackson-annotations.version>
 		<jackson-databind.version>2.10.2</jackson-databind.version>
-		<javax.inject.version>1.0.0.redhat-6</javax.inject.version>
+		<javax.inject.version>1</javax.inject.version>
 		<junit.version>4.13-beta-3</junit.version>
 		<maven.version>3.6.3</maven.version>
 		<maven-plugin-annotations.version>3.6.0</maven-plugin-annotations.version>
