@@ -4,6 +4,8 @@
 
 This plugin will break the maven build if the project fails the quality gate. These checks should happen after analysis has been submitted to the server.
 
+Recommend using [![https://github.com/adnovum/sonar-build-breaker](https://github.com/adnovum/sonar-build-breaker)], easier to integrate with sonarqube.
+
 ### Origin
 
 Fork of https://github.com/slam-it/sonar-quality-gates-maven-plugin, added support for sonarqube 7.9.x, migrated package to com.hack23.maven released to maven central.
