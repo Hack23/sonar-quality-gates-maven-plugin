@@ -4,6 +4,9 @@ import static com.mashape.unirest.http.Unirest.setHttpClient;
 import static java.lang.String.format;
 import static org.apache.http.impl.client.HttpClients.createDefault;
 
+import com.mashape.unirest.request.GetRequest;
+import com.mashape.unirest.request.HttpRequest;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.Properties;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -59,6 +63,28 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	/** The sonar host url. */
 	@Parameter(property = SONAR_HOST_URL)
 	private String sonarHostUrl;
+
+	/**
+	 * property key for sonar login (username ore token), see also
+	 * <a href="https://docs.sonarqube.org/latest/extend/web-api/">SonarQube - Web API
+	 * Authentication</a>
+	 * <br/> aligned to sonar-maven-plugin analysis parameters, see also
+	 * <a href="https://docs.sonarqube.org/latest/analysis/analysis-parameters/">SonarQube - Analysis
+	 * Parameters</a>
+	 */
+	@Parameter(property = "sonar.login")
+	private String sonarLogin;
+
+	/**
+	 * property key for sonar password, see also
+	 * <a href="https://docs.sonarqube.org/latest/extend/web-api/">SonarQube - Web API
+	 * Authentication</a>
+	 * <br/> aligned to sonar-maven-plugin analysis parameters, see also
+	 * <a href="https://docs.sonarqube.org/latest/analysis/analysis-parameters/">SonarQube - Analysis
+	 * Parameters</a>
+	 */
+	@Parameter(property = "sonar.password")
+	private String sonarPassword;
 
 	/**
 	 * Instantiates a new sonar quality gates mojo.
@@ -115,9 +141,11 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @return the list
 	 * @throws MojoFailureException the mojo failure exception
 	 */
-	private static List<Measures> retrieveSonarMeasures(final String url) throws MojoFailureException {
+	private List<Measures> retrieveSonarMeasures(final String url) throws MojoFailureException {
 		try {
-			final HttpResponse<String> response = Unirest.get(url).asString();
+			final GetRequest request = Unirest.get(url);
+			addCredentials(request);
+			final HttpResponse<String> response = request.asString();
 			final String body = response.getBody();
 
 			if (response.getStatus() != STATUS_CODE_OK) {
@@ -160,6 +188,20 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 		}
 
 		return pom.getGroupId() + COLON + pom.getArtifactId();
+	}
+
+	/**
+	 * read auth configuration and update request, if valid values found
+	 * @param request request to enhance with credentials
+	 */
+	protected void addCredentials(HttpRequest request) {
+		if (StringUtils.isNotBlank(sonarLogin)) {
+			if (StringUtils.isBlank(sonarPassword)) {
+				request.basicAuth(sonarLogin, "");
+			} else {
+				request.basicAuth(sonarLogin, sonarPassword);
+			}
+		}
 	}
 
 	/**
