@@ -100,6 +100,15 @@ public class SonarQualityGatesMojoTest {
 		mojo.execute();
 	}
 
+	@Test
+	public void sonarLoginBasicWithBlankTest() throws MojoFailureException, MojoExecutionException, Exception, SecurityException {
+		sonarEventHandler.setResponse(200, getResponse("passedqualitygate.json"));
+
+		setField("sonarLogin","sonarLogin");
+		setField("sonarPassword","");
+		mojo.execute();
+	}
+
 
 	private void setField(String field, String value) throws NoSuchFieldException, IllegalAccessException {
 		final Field f1 = mojo.getClass().getDeclaredField(field);
