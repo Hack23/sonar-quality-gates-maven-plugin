@@ -81,19 +81,45 @@ public class SonarQualityGatesMojoTest {
 		mojo.execute();
 	}
 
-	
+
 	@Test
 	public void sonarProjectKeyPropertyTest() throws MojoFailureException, MojoExecutionException, Exception, SecurityException {
 		sonarEventHandler.setResponse(200, getResponse("passedqualitygate.json"));
 		project.getProperties().put("sonar.projectKey", "com.hack23.maven:test-property");
 
-		
+		setField("sonarHostUrl","http://localhost:" + server.getAddress().getPort());
+		mojo.execute();
+	}
+
+	@Test
+	public void sonarLoginBasicTest() throws MojoFailureException, MojoExecutionException, Exception, SecurityException {
+		sonarEventHandler.setResponse(200, getResponse("passedqualitygate.json"));
+
+		setField("sonarLogin","sonarLogin");
+		setField("sonarPassword","sonarPassword");
+		mojo.execute();
+	}
+
+
+	private void setField(String field, String value) throws NoSuchFieldException, IllegalAccessException {
+		final Field f1 = mojo.getClass().getDeclaredField(field);
+		f1.setAccessible(true);
+		f1.set(mojo, value);
+	}
+
+	@Test
+	public void sonarLoginPropertyTest() throws MojoFailureException, MojoExecutionException, Exception, SecurityException {
+		sonarEventHandler.setResponse(200, getResponse("passedqualitygate.json"));
+		project.getProperties().put("sonar.projectKey", "com.hack23.maven:test-property");
+
+
 		final Field f1 = mojo.getClass().getDeclaredField("sonarHostUrl");
 		f1.setAccessible(true);
 		f1.set(mojo, "http://localhost:" + server.getAddress().getPort());
-		
+
 		mojo.execute();
 	}
+
 
 	@Test
 	public void sonarqube404Test() throws Exception {

@@ -4,9 +4,6 @@ import static com.mashape.unirest.http.Unirest.setHttpClient;
 import static java.lang.String.format;
 import static org.apache.http.impl.client.HttpClients.createDefault;
 
-import com.mashape.unirest.request.GetRequest;
-import com.mashape.unirest.request.HttpRequest;
-
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.List;
@@ -31,6 +28,8 @@ import com.hack23.maven.plugin.model.QualityGateValue;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.request.GetRequest;
+import com.mashape.unirest.request.HttpRequest;
 
 /**
  * The Class SonarQualityGatesMojo.
