@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -27,6 +28,8 @@ import com.hack23.maven.plugin.model.QualityGateValue;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.request.GetRequest;
+import com.mashape.unirest.request.HttpRequest;
 
 /**
  * The Class SonarQualityGatesMojo.
@@ -61,12 +64,34 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	private String sonarHostUrl;
 
 	/**
+	 * property key for sonar login (username ore token), see also
+	 * &lt;a href=&quot;https://docs.sonarqube.org/latest/extend/web-api/&quot;&gt;SonarQube - Web API
+	 * Authentication&lt;/a&gt;
+	 * &lt;br/&gt; aligned to sonar-maven-plugin analysis parameters, see also
+	 * &lt;a href=&quot;https://docs.sonarqube.org/latest/analysis/analysis-parameters/&quot;&gt;SonarQube - Analysis
+	 * Parameters&lt;/a&gt;
+	 */
+	@Parameter(property = &quot;sonar.login&quot;)
+	private String sonarLogin;
+
+	/**
+	 * property key for sonar password, see also
+	 * &lt;a href=&quot;https://docs.sonarqube.org/latest/extend/web-api/&quot;&gt;SonarQube - Web API
+	 * Authentication&lt;/a&gt;
+	 * &lt;br/&gt; aligned to sonar-maven-plugin analysis parameters, see also
+	 * &lt;a href=&quot;https://docs.sonarqube.org/latest/analysis/analysis-parameters/&quot;&gt;SonarQube - Analysis
+	 * Parameters&lt;/a&gt;
+	 */
+	@Parameter(property = &quot;sonar.password&quot;)
+	private String sonarPassword;
+
+	/**
 	 * Instantiates a new sonar quality gates mojo.
 	 */
 	@Inject
-<span class="fc" id="L67">	public SonarQualityGatesMojo() {</span>
-<span class="fc" id="L68">		setHttpClient(createDefault());</span>
-<span class="fc" id="L69">	}</span>
+<span class="fc" id="L92">	public SonarQualityGatesMojo() {</span>
+<span class="fc" id="L93">		setHttpClient(createDefault());</span>
+<span class="fc" id="L94">	}</span>
 
 	/**
 	 * Execute.
@@ -75,38 +100,38 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @throws MojoFailureException   the mojo failure exception
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
-<span class="fc" id="L78">		final MavenProject topLevelProject = session.getTopLevelProject();</span>
-<span class="fc" id="L79">		final List&lt;Measures&gt; measures = retrieveSonarMeasures(</span>
-<span class="fc" id="L80">				format(SONAR_API_URL, getSonarHostUrl(topLevelProject.getProperties()), getSonarKey(topLevelProject)));</span>
+<span class="fc" id="L103">		final MavenProject topLevelProject = session.getTopLevelProject();</span>
+<span class="fc" id="L104">		final List&lt;Measures&gt; measures = retrieveSonarMeasures(</span>
+<span class="fc" id="L105">				format(SONAR_API_URL, getSonarHostUrl(topLevelProject.getProperties()), getSonarKey(topLevelProject)));</span>
 
-<span class="fc bfc" id="L82" title="All 2 branches covered.">		if (measures.isEmpty()) {</span>
-<span class="fc" id="L83">			throw new MojoExecutionException(</span>
-<span class="fc" id="L84">					&quot;\nno matching project in sonarqube for project key:&quot; + getSonarKey(topLevelProject));</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		if (measures.isEmpty()) {</span>
+<span class="fc" id="L108">			throw new MojoExecutionException(</span>
+<span class="fc" id="L109">					&quot;\nno matching project in sonarqube for project key:&quot; + getSonarKey(topLevelProject));</span>
 		}
 
-<span class="fc bfc" id="L87" title="All 2 branches covered.">		if (!&quot;OK&quot;.equals(measures.get(0).getValue())) {</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (!&quot;OK&quot;.equals(measures.get(0).getValue())) {</span>
 
 			try {
-<span class="fc" id="L90">				final QualityGateValue qualityGateValue = new ObjectMapper().readValue(measures.get(1).getValue(),</span>
+<span class="fc" id="L115">				final QualityGateValue qualityGateValue = new ObjectMapper().readValue(measures.get(1).getValue(),</span>
 						QualityGateValue.class);
-<span class="fc" id="L92">				final StringBuilder builder = new StringBuilder();</span>
-<span class="fc" id="L93">				builder.append(&quot;\nFailed quality gate\n&quot;);</span>
-<span class="fc" id="L94">				final List&lt;Conditions&gt; conditions = qualityGateValue.getConditions();</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">				for (final Conditions condition : conditions) {</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">					if (!&quot;OK&quot;.equals(condition.getLevel())) {</span>
-<span class="fc" id="L97">						builder.append(condition);</span>
-<span class="fc" id="L98">						builder.append('\n');</span>
+<span class="fc" id="L117">				final StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L118">				builder.append(&quot;\nFailed quality gate\n&quot;);</span>
+<span class="fc" id="L119">				final List&lt;Conditions&gt; conditions = qualityGateValue.getConditions();</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">				for (final Conditions condition : conditions) {</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">					if (!&quot;OK&quot;.equals(condition.getLevel())) {</span>
+<span class="fc" id="L122">						builder.append(condition);</span>
+<span class="fc" id="L123">						builder.append('\n');</span>
 					}
-<span class="fc" id="L100">				}</span>
+<span class="fc" id="L125">				}</span>
 
-<span class="fc" id="L102">				throw new MojoExecutionException(builder.toString());</span>
+<span class="fc" id="L127">				throw new MojoExecutionException(builder.toString());</span>
 
-<span class="nc" id="L104">			} catch (final IOException e) {</span>
-<span class="nc" id="L105">				throw new MojoFailureException(&quot;Failed to execute mojo&quot;, e);</span>
+<span class="nc" id="L129">			} catch (final IOException e) {</span>
+<span class="nc" id="L130">				throw new MojoFailureException(&quot;Failed to execute mojo&quot;, e);</span>
 			}
 
 		}
-<span class="fc" id="L109">	}</span>
+<span class="fc" id="L134">	}</span>
 
 	/**
 	 * Retrieve sonar measures.
@@ -115,22 +140,24 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @return the list
 	 * @throws MojoFailureException the mojo failure exception
 	 */
-	private static List&lt;Measures&gt; retrieveSonarMeasures(final String url) throws MojoFailureException {
+	private List&lt;Measures&gt; retrieveSonarMeasures(final String url) throws MojoFailureException {
 		try {
-<span class="fc" id="L120">			final HttpResponse&lt;String&gt; response = Unirest.get(url).asString();</span>
-<span class="fc" id="L121">			final String body = response.getBody();</span>
+<span class="fc" id="L145">			final GetRequest request = Unirest.get(url);</span>
+<span class="fc" id="L146">			addCredentials(request);</span>
+<span class="fc" id="L147">			final HttpResponse&lt;String&gt; response = request.asString();</span>
+<span class="fc" id="L148">			final String body = response.getBody();</span>
 
-<span class="fc bfc" id="L123" title="All 2 branches covered.">			if (response.getStatus() != STATUS_CODE_OK) {</span>
-<span class="fc" id="L124">				throw new MojoFailureException(MessageFormat.format(</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">			if (response.getStatus() != STATUS_CODE_OK) {</span>
+<span class="fc" id="L151">				throw new MojoFailureException(MessageFormat.format(</span>
 						&quot;Attempt to call Sonarqube responded with an error status :{0} : for url:{1} : response{2}: &quot;,
-<span class="fc" id="L126">						response.getStatus(), url, body));</span>
+<span class="fc" id="L153">						response.getStatus(), url, body));</span>
 			}
 
-<span class="fc" id="L129">			return new ObjectMapper().readValue(body, MeasuresContainer.class).getMeasures();</span>
-<span class="fc" id="L130">		} catch (IOException | UnirestException e) {</span>
-<span class="fc" id="L131">			throw new MojoFailureException(&quot;Could not execute sonar-quality-gates-plugin&quot;, e);</span>
+<span class="fc" id="L156">			return new ObjectMapper().readValue(body, MeasuresContainer.class).getMeasures();</span>
+<span class="fc" id="L157">		} catch (IOException | UnirestException e) {</span>
+<span class="fc" id="L158">			throw new MojoFailureException(&quot;Could not execute sonar-quality-gates-plugin&quot;, e);</span>
 		} finally {
-<span class="fc" id="L133">			shutdown();</span>
+<span class="fc" id="L160">			shutdown();</span>
 		}
 	}
 
@@ -141,11 +168,11 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @return the sonar host url
 	 */
 	private String getSonarHostUrl(final Properties properties) {
-<span class="fc bfc" id="L144" title="All 2 branches covered.">		if (sonarHostUrl != null) {</span>
-<span class="fc" id="L145">			return sonarHostUrl;</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">		if (sonarHostUrl != null) {</span>
+<span class="fc" id="L172">			return sonarHostUrl;</span>
 		}
 
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">		return properties.containsKey(SONAR_HOST_URL) ? properties.getProperty(SONAR_HOST_URL) : SONAR_DEFAULT_HOST_URL;</span>
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">		return properties.containsKey(SONAR_HOST_URL) ? properties.getProperty(SONAR_HOST_URL) : SONAR_DEFAULT_HOST_URL;</span>
 	}
 
 	/**
@@ -155,12 +182,26 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 * @return the sonar key
 	 */
 	private static String getSonarKey(final MavenProject pom) {
-<span class="fc bfc" id="L158" title="All 2 branches covered.">		if (pom.getModel().getProperties().containsKey(SONAR_PROJECT_KEY)) {</span>
-<span class="fc" id="L159">			return pom.getModel().getProperties().getProperty(SONAR_PROJECT_KEY);</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">		if (pom.getModel().getProperties().containsKey(SONAR_PROJECT_KEY)) {</span>
+<span class="fc" id="L186">			return pom.getModel().getProperties().getProperty(SONAR_PROJECT_KEY);</span>
 		}
 
-<span class="fc" id="L162">		return pom.getGroupId() + COLON + pom.getArtifactId();</span>
+<span class="fc" id="L189">		return pom.getGroupId() + COLON + pom.getArtifactId();</span>
 	}
+
+	/**
+	 * read auth configuration and update request, if valid values found
+	 * @param request request to enhance with credentials
+	 */
+	protected void addCredentials(HttpRequest request) {
+<span class="fc bfc" id="L197" title="All 2 branches covered.">		if (StringUtils.isNotBlank(sonarLogin)) {</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">			if (StringUtils.isBlank(sonarPassword)) {</span>
+<span class="fc" id="L199">				request.basicAuth(sonarLogin, &quot;&quot;);</span>
+			} else {
+<span class="fc" id="L201">				request.basicAuth(sonarLogin, sonarPassword);</span>
+			}
+		}
+<span class="fc" id="L204">	}</span>
 
 	/**
 	 * Shutdown.
@@ -169,10 +210,10 @@ public class SonarQualityGatesMojo extends AbstractMojo {
 	 */
 	private static void shutdown() throws MojoFailureException {
 		try {
-<span class="fc" id="L172">			Unirest.shutdown();</span>
-<span class="nc" id="L173">		} catch (final IOException e) {</span>
-<span class="nc" id="L174">			throw new MojoFailureException(&quot;Could not properly shutdown&quot;, e);</span>
-<span class="fc" id="L175">		}</span>
-<span class="fc" id="L176">	}</span>
+<span class="fc" id="L213">			Unirest.shutdown();</span>
+<span class="nc" id="L214">		} catch (final IOException e) {</span>
+<span class="nc" id="L215">			throw new MojoFailureException(&quot;Could not properly shutdown&quot;, e);</span>
+<span class="fc" id="L216">		}</span>
+<span class="fc" id="L217">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
