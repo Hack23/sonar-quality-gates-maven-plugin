@@ -59,6 +59,8 @@ $ mvn sonar-quality-gates:inspect
       <!-- Optional configuration -->
       <configuration>
         <sonarHostUrl>SONAR-HOST-URL</sonarHostUrl>
+        <sonarLogin>(username ore token)</sonarLogin>
+        <sonarPassword>(password if username used, not when using token)</sonarPassword>
       </configuration>
     </plugin>
   </plugins>
@@ -72,10 +74,8 @@ $ mvn sonar-quality-gates:inspect
   <id>sonar</id>
   <properties>
     <sonar.host.url>http://localhost:9000</sonar.host.url>
-    <sonar.jdbc.url>jdbc:postgresql://localhost/sonar</sonar.jdbc.url>
-    <sonar.jdbc.username>sonar</sonar.jdbc.username>
-    <sonar.jdbc.password>xxxxx</sonar.jdbc.password>
-    <sonar.jdbc.driver>org.postgresql.Driver</sonar.jdbc.driver>
+    <sonar.login>(username ore token)</sonar.login>
+    <sonar.password>(password if username used, not when using token)</sonar.password>
   </properties>
 </profile>
 
