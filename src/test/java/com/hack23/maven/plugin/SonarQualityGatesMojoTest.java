@@ -60,8 +60,8 @@ public class SonarQualityGatesMojoTest {
 	public void failedQualityGateTest() throws Exception {
 		exception.expect(MojoExecutionException.class);
 		exception.expectMessage("Failed quality gate\n"
-				+ "Conditions[op=LT,period=1,metric=new_coverage,level=ERROR,error=95,actual=47.05882352941177]\n"
-				+ "Conditions[op=LT,period=<null>,metric=coverage,level=ERROR,error=95,actual=47.4]");
+				+ "Conditions[actual=47.05882352941177,error=95,level=ERROR,metric=new_coverage,op=LT,period=1]\n"
+				+ "Conditions[actual=47.4,error=95,level=ERROR,metric=coverage,op=LT,period=<null>");
 
 		sonarEventHandler.setResponse(200, getResponse("failedqualitygate.json"));
 		mojo.execute();
