@@ -7,7 +7,7 @@ class com.mashape.unirest.request--><rect fill="#FEFECE" filter="url(#f15sjp398u
 link com.hack23.maven.plugin to org.apache.maven.plugin--><path d="M364.48,32.06 C305.09,47.32 198.35,74.76 136.46,90.67 " fill="none" id="com.hack23.maven.plugin-&gt;org.apache.maven.plugin" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="131.35,91.99,141.0618,93.6272,136.1931,90.7471,139.0732,85.8783,131.35,91.99" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[224f4c0012b2d5d834385137107cf6b7]
 link com.hack23.maven.plugin to org.apache.maven.execution--><path d="M393.07,32.06 C373.92,46.73 340.1,72.65 319.07,88.77 " fill="none" id="com.hack23.maven.plugin-&gt;org.apache.maven.execution" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="315.04,91.85,324.6169,89.5514,319.009,88.809,319.7513,83.2011,315.04,91.85" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[074e625280425299fcc7329d4515059c]
 link com.hack23.maven.plugin to org.apache.maven.project--><path d="M422.07,32.06 C441.39,46.73 475.53,72.65 496.76,88.77 " fill="none" id="com.hack23.maven.plugin-&gt;org.apache.maven.project" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="500.82,91.85,496.089,83.2118,496.8442,88.8181,491.2379,89.5732,500.82,91.85" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e826b0df267e4ff1341934824bbe4bc7]
-link com.hack23.maven.plugin to com.mashape.unirest.request--><path d="M451.47,32.06 C512.15,47.32 621.24,74.76 684.49,90.67 " fill="none" id="com.hack23.maven.plugin-&gt;com.mashape.unirest.request" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="689.71,91.99,681.9531,85.9212,684.8601,90.774,680.0074,93.681,689.71,91.99" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="186" x="331.5" y="135.2822">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[3f800456af7e6ce1787fda4b30f5bb0a]
+link com.hack23.maven.plugin to com.mashape.unirest.request--><path d="M451.47,32.06 C512.15,47.32 621.24,74.76 684.49,90.67 " fill="none" id="com.hack23.maven.plugin-&gt;com.mashape.unirest.request" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="689.71,91.99,681.9531,85.9212,684.8601,90.774,680.0074,93.681,689.71,91.99" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="186" x="331.5" y="135.2822">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[a05a16fba729e409e9f7d9c0257598b7]
 @startuml
     set namespaceSeparator none
     hide circle
@@ -29,7 +29,7 @@ PlantUML version 1.2020.01(Sun Feb 16 18:40:32 CET 2020)
 (APACHE source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.6+10-post-Ubuntu-2ubuntu2
+Java Version: 11.0.7+10-post-Ubuntu-2ubuntu1
 Operating System: Linux
 Default Encoding: UTF-8
 Language: en

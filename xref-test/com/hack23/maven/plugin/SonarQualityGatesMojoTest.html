@@ -68,8 +68,8 @@
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> failedQualityGateTest() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  		exception.expect(MojoExecutionException.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  		exception.expectMessage(<span class="jxr_string">"Failed quality gate\n"</span>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  				+ <span class="jxr_string">"Conditions[op=LT,period=1,metric=new_coverage,level=ERROR,error=95,actual=47.05882352941177]\n"</span>
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  				+ <span class="jxr_string">"Conditions[op=LT,period=&lt;null&gt;,metric=coverage,level=ERROR,error=95,actual=47.4]"</span>);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  				+ <span class="jxr_string">"Conditions[actual=47.05882352941177,error=95,level=ERROR,metric=new_coverage,op=LT,period=1]\n"</span>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  				+ <span class="jxr_string">"Conditions[actual=47.4,error=95,level=ERROR,metric=coverage,op=LT,period=&lt;null&gt;"</span>);
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  		sonarEventHandler.setResponse(200, getResponse(<span class="jxr_string">"failedqualitygate.json"</span>));
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  		mojo.execute();
