@@ -78,7 +78,7 @@
     <scm-publish.pubScmUrl>scm:git:https://github.com/Hack23/sonar-quality-gates-maven-plugin.git</scm-publish.pubScmUrl>
     <scm-publish.siteDocOuputDirectory>${project.build.directory}/site</scm-publish.siteDocOuputDirectory>
     <jackson-annotations.version>2.11.3</jackson-annotations.version>
-    <jackson-databind.version>2.11.2</jackson-databind.version>
+    <jackson-databind.version>2.11.3</jackson-databind.version>
     <javax.inject.version>1-redhat-3</javax.inject.version>
     <junit.version>4.13</junit.version>
     <maven.version>3.6.3</maven.version>
