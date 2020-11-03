@@ -72,7 +72,7 @@ pipeline {
                 sh "git reset --hard origin/master"
                 sh "git checkout -f master"
                 sh "git reset --hard origin/master"
-                sh "mvn -B gitflow:release "
+                sh "mvn -B gitflow:release -e"
                 }
        }
 
