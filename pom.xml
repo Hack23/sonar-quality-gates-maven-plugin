@@ -216,6 +216,11 @@
   <build>
     <pluginManagement>
       <plugins>
+		<plugin>
+			<groupId>com.amashchenko.maven.plugin</groupId>
+			<artifactId>gitflow-maven-plugin</artifactId>
+			<version>1.14.0</version>
+		</plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
@@ -412,6 +417,18 @@
           <useModulePath>false</useModulePath>
         </configuration>
       </plugin>
+	<plugin>
+		<groupId>com.amashchenko.maven.plugin</groupId>
+		<artifactId>gitflow-maven-plugin</artifactId>
+		<configuration>
+			<gitFlowConfig>
+				<developmentBranch>master</developmentBranch>
+			</gitFlowConfig>
+			<installProject>true</installProject>
+			<postReleaseGoals>deploy</postReleaseGoals>
+			<argLine>-DperformRelease=true</argLine>
+		</configuration>
+	</plugin>
     </plugins>
   </build>
   <reporting>
